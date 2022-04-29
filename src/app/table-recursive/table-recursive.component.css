@@ -1,0 +1,22 @@
+.control {
+    border-color: green;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    width: fit-content;
+    text-align: center;
+    cursor: move;
+    height: fit-content;
+    height: -moz-max-content;
+    background-color: white;
+    padding:5px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.container{
+    margin-top:100px
+}
+

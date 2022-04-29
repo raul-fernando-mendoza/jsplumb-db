@@ -1,15 +1,15 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { JsplumbService } from './jsplumb.service';
+import { JsplumbService } from '../jsplumb.service';
 import { StraightConnector } from "@jsplumb/core"
 import { BezierConnector } from '@jsplumb/connector-bezier';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'jsplumb-test',
+  templateUrl: './jsplumtest.component.html',
+  styleUrls: ['./jsplumtest.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class JsPlumbComponent implements AfterViewInit{
 
   constructor(private jsplumbService: JsplumbService){
 
