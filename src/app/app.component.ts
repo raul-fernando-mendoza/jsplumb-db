@@ -1,5 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { JsplumbService } from './jsplumb.service';
+import { StraightConnector } from "@jsplumb/core"
+import { BezierConnector } from '@jsplumb/connector-bezier';
+
 
 @Component({
   selector: 'app-root',
@@ -25,18 +28,42 @@ export class AppComponent implements AfterViewInit{
     instance.draggable("control1", {"containment": "true"})
     instance.addEndpoint("control1", {
       endpoint: "Dot",  // rectangle, blank, image
-      anchor: ["RightMiddle"],
+      anchor: ["Top"],
       isSource: true,
       connectionType: "red-connection",
-      maxConnections:1
+      maxConnections:1,
+      id:"endpoint",
+      uuid:"someuid"
+      
     });  
     instance.addEndpoint("control2", {
       endpoint: "Dot",
-      anchor: ["LeftMiddle"],
+      anchor: ["Bottom"],
       isTarget: true,
       connectionType: "red-connection",
       maxConnections:1
-    });      
+    }); 
+
+    instance.connect({
+      source:"control1",
+      target:"control2",
+      endpoint:"Dot",
+      label:"my conneccion\nsecond line",
+      anchors:["BottomRight","TopLeft"],
+      connector:[
+        "Bezier",
+        {
+            curviness: 50
+        }
+      ],
+      overlays:[ 
+        [ "Arrow", {location:1} ],
+        [ 
+            "Label", 
+            { label:"foo", location:0.25, id:"myLabel" } 
+        ]
+    ]          
+    })
   }
   title = 'jsplumb-test';
 }
